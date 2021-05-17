@@ -1,0 +1,25 @@
+{
+  "name": "auto_gurus",
+  "version": "1.0.0",
+  "description": "Classic car collection for car lovers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dennis-The14th-web/auto_gurus.git"
+  },
+  "author": "Dennis Itua",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dennis-The14th-web/auto_gurus/issues"
+  },
+  "homepage": "https://github.com/Dennis-The14th-web/auto_gurus#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.9"
+  }
+}
