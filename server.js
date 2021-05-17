@@ -19,9 +19,11 @@ mongoose.set('useFindAndModify', false);
 
 
 require('./models/Post');
+require('./models/User');
 
 app.use(express.json())
 app.use(require('./routes/posts'));
+app.use(require('./routes/users'));
 
 app.listen(PORT, () => 
 console.log("Server is running on port: ", PORT));

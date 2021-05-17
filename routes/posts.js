@@ -1,33 +1,15 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const Post = mongoose.model('Post');
+
+const { getPosts, bySearch, createPosts, updatePosts, deletePosts, likePosts} = require('../controllers/posts');
+
 const router = express.Router();
+const auth = require('../middleware/auth');
 
-
-router.get('/getposts', async (req, res) => {
-    try {
-        const postMessage = await Post.find();
-        res.status(200).json(postMessage);
-    } catch (error) {
-        res.status(404).json({ message: error.message })
-    }
-})
-
-router.post('/createposts', async(req, res) => {
-    const post = req.body;
-    const newPostMessage = new Post({
-        ...post,
-        name: req.userId,
-        createdAt: new Date().toISOString()
-    });
-    try{
-        await newPostMessage.save();
-        res.status(201).json(newPostMessage);
-    } catch (error) {
-        res.status(409).json({ message: error.message });
-    }
-        
-    
-})
+router.get('/search', bySearch);
+router.get('/', getPosts);
+router.post('/', auth, createPosts);
+router.patch('/:id', auth, updatePosts);
+router.delete('/:id', auth, deletePosts);
+router.patch('/:id/likeposts', auth, likePosts);
 
 module.exports = router;
