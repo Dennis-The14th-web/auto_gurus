@@ -8,7 +8,6 @@ let router = express.Router();
 const secret = 'test';
 
 
-// router.post('/signin', async(req, res) => {
 const signIn = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -22,9 +21,9 @@ const signIn = async (req, res) => {
         res.status(500).json({ message: "Yayks... Something went wrong!"})
     }
 }
-// )
 
-// router.post('/signup', async(req, res) => {
+
+
 const signUp = async (req, res) => {
     const { email, 
             password, 
@@ -44,7 +43,7 @@ const signUp = async (req, res) => {
                 console.log(error);
             }
 }
-// )
+
 
 router = { signIn, signUp };
 module.exports = router;

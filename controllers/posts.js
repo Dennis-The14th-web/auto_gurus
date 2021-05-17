@@ -6,7 +6,6 @@ let router = express.Router();
 
 
 
-// router.get('/getposts', async (req, res) => {
 const getPosts = async (req, res) => {
     try {
         const postMessage = await Post.find();
@@ -15,9 +14,8 @@ const getPosts = async (req, res) => {
         res.status(404).json({ message: error.message })
     }
 }
-// )
 
-// router.get('/bysearch', async(req, res) => {
+
 const bySearch = async (req, res) => {
     const { srchQuery } = req.query;
     try{
@@ -28,9 +26,8 @@ const bySearch = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
-// )
 
-// router.post('/createposts', async(req, res) => {
+
 const createPosts = async (req, res) => {
     const post = req.body;
     const newPostMessage = new Post({
@@ -46,9 +43,8 @@ const createPosts = async (req, res) => {
     }
         
 }
-// )
 
-// router.put('/updateposts', async(req, res) => {
+
 const updatePosts =  async (req, res) => {
     const { id } = req.params;
     const { carName, message, name, selectedFile, model } = req.body;
@@ -57,18 +53,16 @@ const updatePosts =  async (req, res) => {
     await Post.findByIdAndUpdate(id, updatedPost, { new: true });
     res.json(updatedPost);
 }
-// )
 
-// router.delete('/deleteposts', async(req, res) => {
+
 const deletePosts =  async (req, res) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("No post with that ID");
     await Post.findByIdAndRemove(id);
     res.json({ message: "Post has been successfully deleted"})
 }
-// )
 
-// router.put('/likeposts', async(req, res) => {
+
 const likePosts =  async (req, res) => {
     const { id } = req.params;
     if(!req.userId) {
@@ -85,7 +79,7 @@ const likePosts =  async (req, res) => {
     const updatedPost = await Post.findByIdAndUpdate(id, post, { new: true});
     res.json(updatedPost);
 }
-// )
+
 router = {getPosts, bySearch, createPosts, updatePosts, deletePosts, likePosts};
 
 module.exports = router;
