@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
 const app = express();
 const PORT = 5000;
 
@@ -16,5 +15,13 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", (err) => {
     console.log("error connecting", err)
 })
+mongoose.set('useFindAndModify', false);
 
-app.listen(PORT, () => console.log("Server is running on port: ", PORT));
+
+require('./models/Post');
+
+app.use(express.json())
+app.use(require('./routes/posts'));
+
+app.listen(PORT, () => 
+console.log("Server is running on port: ", PORT));
