@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// const {ObjectId} = mongoose.Schema.Types
 
 const postSchema = mongoose.Schema({
     carName: String,
@@ -18,4 +17,5 @@ const postSchema = mongoose.Schema({
     }
 });
 
-mongoose.model('Post', postSchema);
+const Post = mongoose.model('Post', postSchema);
+module.exports = Post;

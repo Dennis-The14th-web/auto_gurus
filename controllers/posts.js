@@ -1,7 +1,7 @@
 // const { response } = require('express');
 const express = require('express');
 const mongoose = require('mongoose');
-const Post = mongoose.model('Post');
+const Post = require('../models/post.js');
 let router = express.Router();
 
 

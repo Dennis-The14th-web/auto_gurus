@@ -1,5 +1,6 @@
 const express = require('express');
 
+
 const { getPosts, bySearch, createPosts, updatePosts, deletePosts, likePosts} = require('../controllers/posts');
 
 const router = express.Router();

@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
 const app = express();
 const PORT = 5000;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://localhost/autoGurus", 
+mongoose.connect("mongodb://localhost/autoGurus_db", 
 {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -18,10 +21,6 @@ mongoose.connection.on("error", (err) => {
 mongoose.set('useFindAndModify', false);
 
 
-require('./models/Post');
-require('./models/User');
-
-app.use(express.json())
 app.use(require('./routes/posts'));
 app.use(require('./routes/users'));
 

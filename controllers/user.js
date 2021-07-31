@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = mongoose.model('User');
+const User = require('../models/user.js');
 let router = express.Router();
 
 const secret = 'test';
@@ -14,7 +14,7 @@ const signIn = async (req, res) => {
         const existingUser = await User.findOne({ email });
         if (!existingUser) return res.status(404).json({ message: "User doesn't exist!" });
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
-        if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials!" });
+        if (!isPasswordCorrect) return res.status(400).json({ message: "User doesn't exist!" });
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, secret, {expiresIn: "1h" });
         res.status(200).json({ result: existingUser, token });
     } catch (error) {
