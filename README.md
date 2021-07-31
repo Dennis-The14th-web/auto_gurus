@@ -1,3 +1,3 @@
 ## auto_gurus
 
-### react-app
+### MERN-app
