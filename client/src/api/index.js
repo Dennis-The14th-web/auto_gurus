@@ -9,14 +9,14 @@ axios.interceptors.request.use(req => {
     return req;
 })
 
-export const fetchPost        = id => axios.get(`${API}/${id}`);
-export const fetchPosts       = page => axios.get(`${API}?page=${page}`);
-export const fetchPostsBySrch = srchQuery => axios.get(`${API}/search?searchQuery=${srchQuery}`);
-export const createPost       = newPost => axios.post(`${API}`, newPost);
-export const likePost         = id => axios.patch(`${API}/${id}/likePost`);
+export const fetchPost        = id                => axios.get(`${API}/${id}`);
+export const fetchPosts       = page              => axios.get(`${API}?page=${page}`);
+export const fetchPostsBySrch = srchQuery         => axios.get(`${API}/search?searchQuery=${srchQuery}`);
+export const createPost       = newPost           => axios.post(`${API}`, newPost);
+export const likePost         = id                => axios.patch(`${API}/${id}/likePost`);
 export const updatePost       = (id, updatedPost) => axios.patch(`${API}/${id}`, updatedPost);
-export const deletePost       = id => axios.delete(`${API}/${id}`);
+export const deletePost       = id                => axios.delete(`${API}/${id}`);
 
 // Authentication call
-export const signIn           = reqBody => axios.post('/user/signin', reqBody);
-export const signUp           = reqBody => axios.post('/user/signup', reqBody);
+export const signIn           = reqBody           => axios.post('/user/signin', reqBody);
+export const signUp           = reqBody           => axios.post('/user/signup', reqBody);
