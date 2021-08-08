@@ -8,6 +8,8 @@ export const START_LOADING_INSTANCE   = 'START_LOADING_INSTANCE';
 export const END_LOADING_INSTANCE     = 'END_LOADING_INSTANCE';
 export const LIKE_INSTANCE            = 'LIKE_INSTANCE';
 export const AUTH_INSTANCE            = 'AUTH_INSTANCE';
+
+//Authentication constants
 export const LOGIN_INSTANCE           = 'LOGIN_INSTANCE';
 export const LOGOUT_INSTANCE          = 'LOGOUT_INSTANCE';
 
