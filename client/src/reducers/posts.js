@@ -11,11 +11,11 @@ export default (posts = { isLoading: true, posts: [] }, action) => {
 
         case actionConstants.FETCH_ALL_INSTANCE:
             return {
-                ...posts,
-                posts: action.payload.data,
-                currentPage: action.payload.currentPage,
-                numberOfPages: action.payload.numberOfPages
-            };
+                        ...posts,
+                        posts: action.payload.data,
+                        currentPage: action.payload.currentPage,
+                        numberOfPages: action.payload.numberOfPages
+                   };
 
         case actionConstants.FETCH_BY_SEARCH_INSTANCE:
             return { ...posts, posts: action.payload.data };
@@ -24,16 +24,29 @@ export default (posts = { isLoading: true, posts: [] }, action) => {
             return { ...posts, posts: action.payload.post };
         
         case actionConstants.LIKE_INSTANCE:
-            return { ...posts, posts: posts.posts.map(post => (post.id === action.payload._id ? action.payload: post)) };
+            return { 
+                        ...posts, 
+                        posts: posts.posts.map( post => (
+                            post.id === action.payload._id ? action.payload : post
+                            )) 
+                    };
 
         case actionConstants.CREATE_INSTANCE:
             return { ...posts, posts: [ ...posts.posts, action.payload] };
 
         case actionConstants.UPDATE_INSTANCE:
-            return { ...posts, posts: posts.posts.map(post => (post.id === action.payload._id ? action.payload: post)) };
+            return { 
+                        ...posts, 
+                        posts: posts.posts.map( post => (
+                            post.id === action.payload._id ? action.payload: post
+                            )) 
+                   };
 
         case actionConstants.DELETE_INSTANCE:
-            return { ...posts, posts: posts.posts.filter(post => post._id !== action.payload) };
+            return { 
+                        ...posts, 
+                        posts: posts.posts.filter( post => post._id !== action.payload) 
+                   };
 
         default:
             return { ...posts, posts };
