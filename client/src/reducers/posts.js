@@ -38,7 +38,7 @@ export default (posts = { isLoading: true, posts: [] }, action) => {
             return { 
                         ...posts, 
                         posts: posts.posts.map( post => (
-                            post.id === action.payload._id ? action.payload: post
+                            post.id === action.payload._id ? action.payload : post
                             )) 
                    };
 
