@@ -2,9 +2,9 @@ const { AUTH_INSTANCE } = require("../constants/actionConstants")
 // import all/(*) api calls as an alias
 import * as api from '../api/index.js';
 
-export const signin = (signInData, router) => async dispatch => {
+export const signin = (formData, router) => async dispatch => {
     try {
-        const { data } = await api.signIn(signInData);
+        const { data } = await api.signIn(formData);
         dispatch({ type: AUTH_INSTANCE, data});
         router.push('/');
     } catch (err) {
@@ -12,9 +12,9 @@ export const signin = (signInData, router) => async dispatch => {
     }
 };
 
-export const signup = (signUpData, router) => async (dispatch) => {
+export const signup = (formData, router) => async (dispatch) => {
     try {
-        const { data } = await api.signUp(signUpData);
+        const { data } = await api.signUp(formData);
         dispatch({ type: AUTH_INSTANCE, data});
         router.push('/');
     } catch (err) {
