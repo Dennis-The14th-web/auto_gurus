@@ -1,9 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.js');
-let router = express.Router();
+
 
 const secret = 'test';
 
@@ -30,6 +28,7 @@ const signUp = async (req, res) => {
             confirmPassword, 
             firstName,
             lastName} = req.body;
+            console.log("REQ BODY", email, password, confirmPassword, firstName, lastName);
             try {
                 const existingUser = await User.findOne({ email });
                 if (existingUser) return res.status(400).json({ message: "User already exists!" });
@@ -45,5 +44,5 @@ const signUp = async (req, res) => {
 }
 
 
-router = { signIn, signUp };
+const router = { signIn, signUp };
 module.exports = router;

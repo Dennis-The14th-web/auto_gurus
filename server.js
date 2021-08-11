@@ -1,11 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
+const postRoutes = require('./routes/posts.js');
+const userRoutes = require('./routes/user.js');
 
 const app = express();
 const PORT = 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 mongoose.connect("mongodb://localhost/autoGurus_db", 
 {
@@ -20,8 +25,9 @@ mongoose.connection.on("error", (err) => {
 })
 mongoose.set('useFindAndModify', false);
 
-app.use(require('./routes/posts'));
-app.use(require('./routes/users'));
+app.use('/posts', postRoutes);
+app.use('/user', userRoutes);
+
 
 app.listen(PORT, () => 
 console.log("Server is running on port: ", PORT));

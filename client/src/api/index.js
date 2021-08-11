@@ -18,5 +18,5 @@ export const updatePost = (id, updatedPost) => axios.patch(`${API}/${id}`, updat
 export const deletePost = id => axios.delete(`${API}/${id}`);
 
 // Authentication call
-export const signIn = signInData => axios.post('/user/signin', signInData);
-export const signUp = signUpData => axios.post('/user/signup', signUpData);
+export const signIn = FormData => axios.post('/user/signin', FormData);
+export const signUp = FormData => axios.post('/user/signup', FormData);
