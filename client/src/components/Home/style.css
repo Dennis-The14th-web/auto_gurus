@@ -1,0 +1,28 @@
+
+  .nav {
+    grid-area: header;
+    /* background-color: #0e65bb; */
+    color: #0e65bb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  .brand a {
+    color: #0e65bb;
+    font-size: 3rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .nav-links a {
+    color: #0e65bb;
+    text-decoration: none;
+    padding: 1rem;
+  }
+  .nav-links a:hover {
+    color: #ff8000;
+  } 
+  #center {
+      text-align: center;
+  }

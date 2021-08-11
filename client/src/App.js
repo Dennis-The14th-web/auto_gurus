@@ -13,10 +13,10 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path="/" exact component={Email} />
-        <Route path="/posts" component={Home} />
-        <Route path="/user/signin" component={Password} />
-        <Route path="/user/signup" component={SignUp} />
+        <Route path="/" exact component={ Email } />
+        <Route path="/posts" component={ Home } />
+        <Route path="/user/signin" component={ Password } />
+        <Route path="/user/signup" component={ SignUp } />
       </Switch>
     </Router>
   );

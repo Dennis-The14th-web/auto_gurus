@@ -7,7 +7,7 @@ export const signin = (formData, router) => async dispatch => {
         const { data } = await api.signIn(formData);
         dispatch({ type: AUTH_INSTANCE, data});
         console.log("THIS: ", data);
-        router.push('/');
+        router.push('/posts');
     } catch (err) {
         console.log(err);
     }
