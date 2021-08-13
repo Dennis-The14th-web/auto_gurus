@@ -13,7 +13,7 @@ export const signin = (formData, router) => async dispatch => {
     }
 };
 
-export const signup = (formData, router) => async (dispatch) => {
+export const signup = (formData, router) => async dispatch => {
     try {
         const { data } = await api.signUp(formData);
         dispatch({ type: AUTH_INSTANCE, data});
@@ -22,3 +22,15 @@ export const signup = (formData, router) => async (dispatch) => {
         console.log(err);
     }
 };
+
+export const signinquery = (formData, router) => async dispatch => {
+    try {
+        const { data } = await api.signInQuery(formData);
+        dispatch({ type: AUTH_INSTANCE, data});
+        const newData = JSON.stringify(data);
+        console.log(newData);
+        router.push(`/user/signin/${newData}`);
+    } catch (err) {
+        console.log(err);
+    }
+}

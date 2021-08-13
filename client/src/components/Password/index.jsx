@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { signin } from '../../actions/auth';
 import './style.css';
 
 
-const initState = { email: '', password: '' };
+const initState = {  password: '' };
 
 function Password() {
     const [form, setForm] = useState(initState);
     const dispatch = useDispatch();
     const history = useHistory();
+    const { email } = useParams();
+    
     // const email = useSelector(state => state.email)
 
     const submitHandler = e => {
@@ -19,7 +21,7 @@ function Password() {
         console.log("DATAS2: ", form);
     };
 
-    const changeHandler = e => setForm({ ...form, [e.target.name]: e.target.value });
+    const changeHandler = e => setForm({ email, ...form, [e.target.name]: e.target.value });
 
     return (
     <div>
@@ -30,10 +32,7 @@ function Password() {
                         <h2>Sign-In</h2>
                     </li>
                     <li>
-                        <label htmlFor="email">
-                            Email
-                        </label>
-                        <input type="text" name="email" onChange={changeHandler} />
+                       <span type="email" name="email" onChange={changeHandler}>{email}    <Link to="/"><small>  Change</small></Link></span>
                     </li>
                     <li>
                         <label htmlFor="password">Password  
@@ -58,4 +57,3 @@ function Password() {
 
 export default Password;
 
-{/* <Link to="/"><small>Change</small></Link> */}

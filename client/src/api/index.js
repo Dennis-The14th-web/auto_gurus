@@ -19,4 +19,5 @@ export const deletePost = id => axios.delete(`${API}/${id}`);
 
 // Authentication call
 export const signIn = FormData => axios.post('/user/signin', FormData);
+export const signInQuery = FormData => axios.post('/user/signinquery', FormData);
 export const signUp = FormData => axios.post('/user/signup', FormData);

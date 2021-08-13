@@ -16,10 +16,21 @@ const signIn = async (req, res) => {
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, secret, {expiresIn: "1h" });
         res.status(200).json({ result: existingUser, token });
     } catch (error) {
-        res.status(500).json({ message: "Yayks... Something went wrong!"})
+        res.status(500).json({ message: "Ooops... Something went wrong!" })
     }
 }
 
+
+const signInQuery = async (req, res) => {
+    const { email } = req.params;
+    try {
+        const sendUser = await User.findOne({ email });
+        console.log("EMAIL: ", email)
+        res.status(200).json(sendUser);
+    } catch (err) {
+        res.status(500).json({ message: "Oh no... Something went wrong!" })
+    }
+}
 
 
 const signUp = async (req, res) => {
@@ -38,11 +49,11 @@ const signUp = async (req, res) => {
                 const token = jwt.sign({ email: result.email, id: result._id }, secret, { expiresIn: "1h" });
                 res.status(201).json({ result, token });
             } catch (error) {
-                res.status(500).json({ message: "Dang... Something went wrong!"});
+                res.status(500).json({ message: "Dang... Something went wrong!" });
                 console.log(error);
             }
 }
 
 
-const router = { signIn, signUp };
+const router = { signIn, signInQuery, signUp };
 module.exports = router;

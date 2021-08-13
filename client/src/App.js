@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={ Email } />
         <Route path="/posts" component={ Home } />
-        <Route path="/user/signin" component={ Password } />
+        <Route path="/user/signin/:email" component={ Password } />
         <Route path="/user/signup" component={ SignUp } />
       </Switch>
     </Router>

@@ -10,6 +10,6 @@ export const LIKE_INSTANCE            = 'LIKE_INSTANCE';
 export const AUTH_INSTANCE            = 'AUTH_INSTANCE';
 
 //Authentication constants
-export const LOGIN_INSTANCE           = 'LOGIN_INSTANCE';
 export const LOGOUT_INSTANCE          = 'LOGOUT_INSTANCE';
+export const LOGIN_QUERY_INSTANCE     = 'LOGIN_QUERY_INSTANCE';
 
