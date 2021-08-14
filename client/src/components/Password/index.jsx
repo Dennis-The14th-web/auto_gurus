@@ -5,10 +5,8 @@ import { signin } from '../../actions/auth';
 import './style.css';
 
 
-const initState = {  password: '' };
-
 function Password() {
-    const [form, setForm] = useState(initState);
+    const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
     const { email } = useParams();
@@ -17,11 +15,10 @@ function Password() {
 
     const submitHandler = e => {
         e.preventDefault();
-        dispatch(signin(form, history));
-        console.log("DATAS2: ", form);
+        dispatch(signin(password, history));
     };
 
-    const changeHandler = e => setForm({ email, ...form, [e.target.name]: e.target.value });
+    const changeHandler = e => setPassword({ email, ...passowrd, [e.target.name]: e.target.value });
 
     return (
     <div>
