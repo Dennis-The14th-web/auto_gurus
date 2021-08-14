@@ -22,9 +22,9 @@ const signIn = async (req, res) => {
 
 
 const signInQuery = async (req, res) => {
-    const { email } = req.params;
+    const email  = req.params;
     try {
-        const sendUser = await User.findOne({ email });
+        const sendUser = await User.findOne({ _email: JSON.stringify({ email }) });
         console.log("EMAIL: ", email)
         res.status(200).json(sendUser);
     } catch (err) {
