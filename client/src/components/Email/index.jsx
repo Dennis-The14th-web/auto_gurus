@@ -12,7 +12,6 @@ function Email() {
     const submitHandler = e => {
         e.preventDefault()
         dispatch(signinquery(email, history))
-        console.log("DATAS2: ", email);
     }
 
     const changeHandler = e => setEmail({ ...email, [e.target.name]: e.target.value });
