@@ -27,9 +27,7 @@ export const signinquery = (formData, router) => async dispatch => {
     try {
         const { data } = await api.signInQuery(formData);
         dispatch({ type: AUTH_INSTANCE, data});
-        const newData = JSON.stringify(data);
-        console.log(newData);
-        router.push(`/user/signin/${newData}`);
+        router.push(`/user/signin/${data}`);
     } catch (err) {
         console.log(err);
     }
