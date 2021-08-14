@@ -22,11 +22,10 @@ const signIn = async (req, res) => {
 
 
 const signInQuery = async (req, res) => {
-    const email  = req.params;
     try {
-        const sendUser = await User.findOne({ _email: JSON.stringify({ email }) });
-        console.log("EMAIL: ", email)
-        res.status(200).json(sendUser);
+        const { email }  = req.body;
+        console.log('EMAIL: ', email);
+        res.status(200).json(email);
     } catch (err) {
         res.status(500).json({ message: "Oh no... Something went wrong!" })
     }
@@ -39,7 +38,6 @@ const signUp = async (req, res) => {
             confirmPassword, 
             firstName,
             lastName} = req.body;
-            console.log("REQ BODY", email, password, confirmPassword, firstName, lastName);
             try {
                 const existingUser = await User.findOne({ email });
                 if (existingUser) return res.status(400).json({ message: "User already exists!" });
